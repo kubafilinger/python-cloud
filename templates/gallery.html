@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Gallery{% endblock %}
+{% set active_page = "gallery" -%}
+{% block head %}
+
+<link href="{{ url_for('static', filename='gallery.css') }}" rel="stylesheet" type="text/css">
+<script src="{{ url_for('static', filename='gallery.js') }}"></script>
+
+{% endblock %}
+{% block body %}
+<h2 style="text-align:center">Gallery of views</h2>
+
+<div class="row">
+	{% for i in range(1, 10) %}
+		<div class="col-4">
+			<img src="{{ url_for('static', filename='images/' + i|string + '.jpg') }}" style="width:100%" onclick="openModal();currentSlide({{ i }})" class="hover-shadow cursor">
+		  </div>
+	{% endfor %}
+</div>
+
+<div id="myModal" class="modal">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+	{% for i in range(1, 10) %}		
+	<div class="mySlides">
+      <div class="numbertext">{{ i }} / 9</div>
+      <img src="{{ url_for('static', filename='images/' + i|string + '.jpg') }}" style="width:100%">
+    </div>
+	{% endfor %}
+    
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+	<div class="row">
+	{% for i in range(1, 10) %}		
+		<div class="col-2">
+		  <img class="demo cursor" src="{{ url_for('static', filename='images/' + i|string + '.jpg') }}" style="width:100%" onclick="currentSlide({{i}})" alt="Img{{i|string}}">
+		</div>
+	{% endfor %}
+   	</div>
+    </div>
+  </div>
+</div>
+{% endblock %}
