@@ -1,0 +1,5 @@
+AZDBSERVER = 'server-sql-test-123.database.windows.net'
+AZDBNAME = 'master'
+AZDBUSER = 'supertajnylogin'
+AZDBPW = 'Nebraska1234'
+AZDBDRIVER = '{ODBC Driver 17 for SQL Server}'
